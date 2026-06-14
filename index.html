@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Shivam's Gym Plan 💪</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:#080810;color:#f0ede8;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;padding-bottom:40px}
+button{font-family:inherit;cursor:pointer}
+.header{text-align:center;padding:22px 16px 14px;border-bottom:1px solid #111}
+.header h1{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.5px}
+.header p{font-size:11px;color:#444;margin-top:3px}
+.badges{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.badge{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:600}
+.tabs{display:flex;gap:6px;padding:14px 12px 10px;overflow-x:auto;border-bottom:1px solid #111;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:8px 14px;border-radius:12px;border:none;font-size:13px;font-weight:700;transition:all 0.2s;text-align:center;min-width:52px}
+.tab-sub{font-size:9px;margin-top:2px;font-weight:400}
+.content{padding:16px 14px}
+.day-tag-row{margin-bottom:16px}
+.day-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:6px;letter-spacing:0.05em}
+.same-as{font-size:10px;color:#444;margin-left:8px}
+.day-title{font-size:19px;font-weight:800;color:#fff;margin-top:8px;line-height:1.2}
+.day-focus{font-size:12px;color:#555;margin-top:4px}
+.time-box{background:#0d0d15;border:1px solid #1a1a2a;border-radius:12px;padding:10px 14px;margin-bottom:14px}
+.time-label{font-size:10px;color:#444;font-weight:700;letter-spacing:0.06em}
+.time-val{font-size:12px;color:#666;margin-top:3px}
+.warmup-box{background:#051a0a;border:1px solid #0d3a18;border-radius:14px;padding:13px;margin-bottom:14px}
+.warmup-label{font-size:10px;font-weight:700;color:#4ade80;margin-bottom:6px;letter-spacing:0.06em}
+.warmup-text{font-size:12px;color:#86efac;line-height:1.8}
+.ex-section-label{font-size:10px;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px}
+.ex-card{border-radius:16px;margin-bottom:8px;overflow:hidden;transition:border-color 0.2s,box-shadow 0.2s}
+.ex-header{width:100%;display:flex;align-items:center;gap:12px;padding:13px;background:transparent;border:none;text-align:left}
+.ex-num{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+.ex-name{font-size:14px;font-weight:700;color:#f0ede8}
+.ex-sets{font-size:11px;font-weight:600;margin-top:2px}
+.ex-arrow{color:#333;font-size:11px;flex-shrink:0;padding:4px}
+.ex-body{padding:0 14px 14px;display:flex;flex-direction:column;gap:12px;border-top:1px solid #1a1a25;padding-top:12px}
+.ex-row{display:flex;gap:10px;align-items:flex-start}
+.ex-icon{font-size:16px;flex-shrink:0}
+.ex-row-label{font-size:10px;font-weight:700;margin-bottom:3px;letter-spacing:0.05em}
+.ex-row-text{font-size:12px;line-height:1.7}
+.ex-why{background:#051a0a;border:1px solid #0d3a18;border-radius:10px;padding:10px 12px;display:flex;gap:8px;align-items:flex-start}
+.ex-why-text{font-size:12px;color:#86efac;line-height:1.7}
+.cooldown-box{background:#150505;border:1px solid #300d0d;border-radius:14px;padding:13px;margin-top:8px;margin-bottom:10px}
+.cooldown-label{font-size:10px;font-weight:700;color:#f87171;margin-bottom:6px;letter-spacing:0.06em}
+.cooldown-text{font-size:12px;color:#fca5a5;line-height:1.8}
+.diabetes-box{background:#1a0e00;border:1px solid #3a2200;border-radius:14px;padding:13px;margin-bottom:10px}
+.diabetes-label{font-size:10px;font-weight:700;color:#fb923c;margin-bottom:6px;letter-spacing:0.06em}
+.diabetes-text{font-size:12px;color:#fdba74;line-height:1.8}
+
+
+
+.rest-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:8px}
+.rest-moon{font-size:64px;line-height:1}
+.rest-title{font-size:18px;font-weight:800;color:#fff}
+.rest-sub{font-size:13px;color:#555;text-align:center;max-width:280px;line-height:1.8}
+.rest-tips{background:#0d1a0d;border:1px solid #1a3a1a;border-radius:16px;padding:16px;width:100%}
+.rest-tip{font-size:13px;color:#5cb85c;line-height:2.1;display:flex;gap:10px}
+.rest-tick{color:#2a6a2a;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Shivam's Gym Plan 💪</h1>
+  <p>Noble Fitness &middot; 75&ndash;80 min &middot; 6:30 PM &middot; Tap exercise to see how</p>
+  <div class="badges">
+    <span class="badge" style="background:#0d1f2d;color:#5ba3d9">Type 1 Diabetic</span>
+    <span class="badge" style="background:#0d1f0d;color:#4ade80">Wrist Healed ✓</span>
+    <span class="badge" style="background:#1f1000;color:#fb923c">Beginner · 10 days in</span>
+    <span class="badge" style="background:#1a0d1a;color:#c084fc">6'1" · 76kg</span>
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="content" id="content"></div>
+
+<script>
+const plan = [
+  {
+    day:"Mon", sameAs:"Same as Thursday", tag:"Back & Biceps",
+    color:"#4f3fcf", colorBg:"#1e1a3a", colorText:"#8b7fe8",
+    title:"Back & Biceps",
+    focus:"Wide back · strong arms · better posture",
+    warmup:"10 min Treadmill — walk at fast pace, not running. This warms your back muscles and gets blood sugar ready for training.",
+    time:"10 min warm-up + 60 min exercises + 10 min stretch = 80 min",
+    exercises:[
+      {name:"Pull Ups", sets:"3 sets × 12, 10, 8 reps", machine:"Assisted Pull Up Machine — ask your gym staff to show you this machine. It has a pad you kneel on that helps lift your body weight.", how:"Kneel on the pad. Hold the handles above you with both hands, palms facing away. Pull yourself up until your chin is above the bar. Lower slowly back down. The machine helps so it is not too hard.", why:"Builds the width of your back — gives you the V-shape body look"},
+      {name:"Lat Pulldown", sets:"3 sets × 12, 10, 8 reps", machine:"Lat Pulldown Machine — has a wide bar attached to a cable above a seat. Sit facing the machine.", how:"Sit down and lock your thighs under the pads. Hold the wide bar with both hands, palms facing away, hands wide apart. Pull the bar straight down to your upper chest. Slowly let it go back up. Do not lean back too much.", why:"Same muscle as pull ups but easier — great for back width and V-shape"},
+      {name:"Compound Row", sets:"3 sets × 12, 10, 8 reps", machine:"Seated Cable Row Machine — you sit on a bench and pull a handle toward you. Feet rest on a platform in front.", how:"Sit straight. Place feet on the platform. Hold the handle with both hands. Pull it toward your belly button. At the end squeeze your shoulder blades together and hold 1 second. Slowly let it go back. Keep your back straight — do not hunch forward.", why:"Fixes rounded shoulders and bad posture — you will stand taller in weeks"},
+      {name:"T-Bar Row", sets:"3 sets × 12, 10, 8 reps", machine:"T-Bar Row Machine — a long bar fixed at one end on the floor, with handles in the middle to hold.", how:"Stand over the bar straddling it. Bend forward about 45 degrees. Hold both handles. Pull the weight up toward your chest. Lower slowly. Keep your back flat — do not round your back.", why:""},
+      {name:"Reverse Grip Lat Pulldown", sets:"3 sets × 12, 10, 8 reps", machine:"Same Lat Pulldown Machine — just change your grip", how:"Same machine as Lat Pulldown but this time hold the bar with palms facing TOWARD you (underhand grip). Pull down to your chest. This hits a different part of your back and also works your biceps at the same time.", why:"Works back and biceps together — efficient use of your time"},
+      {name:"Dumbbell Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells — pick from the rack. Start with 5–7 kg as a beginner.", how:"Stand straight. Hold one dumbbell in each hand, palms facing forward. Curl both up toward your shoulders. Squeeze hard at the top. Lower slowly — take 3 seconds to lower. Do NOT swing your body back and forth.", why:"Main bicep builder — bigger arms, better blood sugar control through muscle activation"},
+      {name:"Cable Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Cable Machine — attach the straight bar at the BOTTOM of the machine.", how:"Stand facing the cable machine. Hold the bar with palms facing up. Keep your elbows tucked at your sides throughout. Curl up toward your chin. Squeeze. Lower slowly.", why:"Cable keeps constant tension on bicep — better shape than dumbbell curl alone"},
+      {name:"Hammer Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells — same rack", how:"Hold dumbbells with palms facing each other — like you are holding a hammer. Curl up one arm at a time or both together. Lower slowly.", why:"Safest curl for your healed wrist — neutral grip puts zero stress on the plate. Adds thickness to arms"},
+      {name:"Forearm Exercise", sets:"3 sets × 20, 20, 20 reps", machine:"Light dumbbell or barbell — very light weight only", how:"Sit on a bench. Rest both forearms on your thighs with wrists hanging off the knees. Hold the bar or dumbbell. Curl your wrists up and down slowly. Very light weight — this is not about heavy lifting.", why:"Strengthens your repaired wrist — makes the plate area stronger over time"},
+    ],
+    cooldown:"Lat stretch: Stand straight, raise your right arm up, bend your whole body to the left side, hold 20 seconds. Switch sides. Bicep stretch: Straighten your arm, put your palm on a wall, slowly turn your body away until you feel a stretch in your arm. Hold 20 sec each side.",
+    diabetes:"Check blood sugar before leaving office. Aim for 130–160 mg/dL before training. Carry glucose tablets in your gym bag — always. Back and biceps day burns moderate sugar. After gym you commute 1 hour — eat a banana and protein (egg or paneer) within 30 minutes of finishing workout.",
+    stamina:""
+  },
+  {
+    day:"Tue", sameAs:"Same as Friday", tag:"Legs & Shoulders",
+    color:"#16a34a", colorBg:"#0d2010", colorText:"#4ade80",
+    title:"Legs & Shoulders",
+    focus:"Testosterone · blood sugar control · broad shoulders · posture",
+    warmup:"10 min Cycling — sit on the stationary cycle, medium pace. Not too fast. This warms your leg muscles and knee joints before heavy leg work.",
+    time:"10 min warm-up + 60 min exercises + 10 min stretch = 80 min",
+    exercises:[
+      {name:"Squat", sets:"3 sets × 12, 10, 8 reps", machine:"Squat Rack — the metal cage with a barbell resting at shoulder height. Start with just the empty bar (20 kg) as a beginner.", how:"Walk under the bar. Rest it on your upper back — NOT on your neck. Hold the bar with both hands. Step back. Feet shoulder width apart, toes pointing slightly outward. Bend your knees and lower your body like sitting on a chair — go down until thighs are parallel to the floor. Push back up through your heels. Keep your chest up throughout.", why:""},
+      {name:"Wide Squat (Sumo Squat)", sets:"3 sets × 12, 10, 8 reps", machine:"Squat Rack or just a dumbbell held with both hands at chest level.", how:"Stand with feet wider than shoulder width apart — about 1.5x your normal stance. Toes pointing outward at 45 degrees. Hold one dumbbell with both hands at your chest or use the barbell. Lower straight down like sitting on a chair. Keep your knees pointing in the same direction as your toes. Push back up through your heels. Back straight throughout.", why:""},
+      {name:"Hip Thrust", sets:"3 sets × 12, 10, 8 reps", machine:"Flat bench + barbell or dumbbell. Place the bench against a wall so it does not slide.", how:"Sit on the floor with your upper back resting against the side of the bench. Place a barbell or dumbbell on your hips — hold it with both hands to keep it steady. Feet flat on floor, knees bent, feet shoulder width. Push your hips UP toward the ceiling by squeezing your glutes (backside muscles). Hold at the top 1–2 seconds. Lower back down slowly. Start with just bodyweight — no bar — for first 2 weeks.", why:""},
+      {name:"Leg Press", sets:"3 sets × 12, 10, 8 reps", machine:"Leg Press Machine — big reclined seat with a large platform you push with both feet.", how:"Sit in the seat with your back flat against the pad. Place both feet on the platform at shoulder width. Release the safety handles on the sides. Lower the platform toward you by bending your knees. Push back up. Do NOT fully lock your knees at the very top — keep a slight bend.", why:"Builds quad size and leg endurance — more leg muscle means better blood sugar control"},
+      {name:"Leg Extension", sets:"3 sets × 12, 10, 8 reps", machine:"Leg Extension Machine — looks like a chair with a padded roller that rests on top of your shins.", how:"Sit in the chair. Place both feet under the padded roller. Straighten both legs upward until fully extended. Hold 1 second at the top. Lower slowly. Works the front of your thighs (quadriceps).", why:"Strengthens knees — important for long term leg health"},
+      {name:"Leg Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Leg Curl Machine — lie face down on this machine with a padded roller behind your ankles.", how:"Lie face down on the machine. Hook both ankles under the padded roller. Curl your legs up toward your backside. Squeeze at the top. Lower slowly — take 3 seconds to lower.", why:"Works back of thighs (hamstrings) — balances your leg muscles and protects your knees from injury"},
+      {name:"Calf Raises", sets:"3 sets × 20, 20, 20 reps", machine:"Standing Calf Raise Machine OR just the edge of any step in the gym.", how:"Stand with the balls of your feet on the edge of a step, heels hanging off the edge. Rise up onto your toes as high as possible. Hold 1 second at top. Lower your heels below the step level and feel the stretch in your calf. Repeat.", why:""},
+      {name:"Shoulder Press", sets:"3 sets × 12, 10, 8 reps", machine:"Shoulder Press Machine — sit in the seat with handles at shoulder height on both sides.", how:"Sit straight with your back flat against the pad. Grab both handles at shoulder height. Push up until arms are nearly straight. Lower back slowly. Do NOT arch your lower back — keep it flat against the pad.", why:"Broadens your shoulders — single biggest visual change to your body shape. Also builds upper body endurance"},
+      {name:"Front Raises", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells — light weight, 3–5 kg to start", how:"Stand straight. Hold one dumbbell in each hand in front of your thighs. Raise both arms straight forward up to shoulder height — no higher. Lower slowly. Keep a slight bend in your elbows throughout.", why:"Works the front part of your shoulder — completes the full shoulder look"},
+      {name:"Lateral Raises", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells — very light, 3–5 kg. This is a small muscle, never go heavy.", how:"Stand straight. Dumbbells at your sides. Raise both arms out sideways like wings — only up to shoulder height, not higher. Lower slowly. This is a small controlled movement — do not swing.", why:"Side shoulders give you that wide broad look — very important for V-shape appearance"},
+    ],
+    cooldown:"Quad stretch: Stand on one leg, pull the other foot up to your backside, hold 20 seconds. Switch legs. Hamstring stretch: Sit on the floor, legs straight out. Reach forward toward your toes and hold 20 seconds. Calf stretch: Stand facing a wall, one foot forward one back, press back heel into floor.",
+    diabetes:"Leg day drops blood sugar the most — big leg muscles eat glucose like a sponge. If sugar is below 100 mg/dL before gym, eat 20g carbs first (banana or juice). Monitor your sugar 2–3 hours after this session. Tell your endocrinologist you do leg day twice a week — they may need to adjust your insulin.",
+    stamina:""
+  },
+  {
+    day:"Wed", sameAs:"Same as Saturday", tag:"Chest & Triceps + Abs",
+    color:"#dc6f1a", colorBg:"#2a1500", colorText:"#fb923c",
+    title:"Chest, Triceps & Abs",
+    focus:"Strong chest · big arms · flat stomach · push strength",
+    warmup:"10 min Cycling — medium pace to warm up chest and shoulder joints before pressing movements.",
+    time:"10 min warm-up + 60 min exercises + 10 min stretch = 80 min",
+    exercises:[
+      {name:"Abs Circuit — 4 Exercises", sets:"3 rounds — do all 4 back to back, rest 60 sec, repeat", machine:"Floor mat — ask staff where the mats are kept", how:"1. Crunches ×15: Lie on back, knees bent, hands behind head. Lift only your shoulders up toward knees. Lower slowly. 2. Leg Raises ×12: Lie flat. Raise both legs straight up to 90 degrees. Lower slowly without touching the floor. 3. Forearm Plank 30 sec: Rest on forearms and toes. Body completely flat like a wooden board. Hold. 4. Russian Twists ×15: Sit at 45 degrees, feet slightly raised, hands together. Twist side to side touching the floor each time.", why:""},
+      {name:"Push Ups", sets:"3 sets × 10, 10, 10 reps", machine:"No machine — just the floor", how:"Place hands on the floor slightly wider than shoulder width. Body straight like a plank from head to toe. Lower your chest all the way to the floor. Push back up. Your wrist is fully healed so regular push ups are completely fine for you.", why:"Tests real pushing strength — builds chest, triceps and shoulders"},
+      {name:"Chest Press (Machine)", sets:"3 sets × 12, 10, 8 reps", machine:"Chest Press Machine — sit in the seat with handles at chest height in front of you.", how:"Sit with your back flat against the pad. Grab both handles at chest height. Push the handles forward until arms are nearly straight. Return slowly. Squeeze your chest muscles as you push forward.", why:"Safest way to train chest as a beginner — machine guides your movement perfectly"},
+      {name:"Incline Press", sets:"3 sets × 12, 10, 8 reps", machine:"Incline Bench set to 30–45 degrees + dumbbells or barbell", how:"Set the bench backrest to an angle (30–45 degrees). Lie back on it. Hold dumbbells at your upper chest. Push both up together until arms nearly straight. Lower slowly back to chest.", why:"Works upper chest — flat chest press alone is not enough for a full developed chest"},
+      {name:"Decline Press", sets:"3 sets × 12, 10, 8 reps", machine:"Decline Bench — your head will be lower than your feet. Hook feet under the pad.", how:"Lie on the decline bench with feet hooked under the pad at the top. Hold dumbbells or barbell at your lower chest. Push up. Lower slowly. Works the lower part of your chest.", why:"Completes the chest — you need all 3 angles (flat, incline, decline) for full chest development"},
+      {name:"Pec Fly", sets:"3 sets × 12, 10, 8 reps", machine:"Pec Deck Machine — sit in the seat with both arms resting on padded wings on either side.", how:"Sit in the machine. Place both forearms on the padded wings. Bring both arms together in front of you like you are hugging a big tree. Squeeze your chest hard. Open back slowly until you feel a stretch.", why:"Isolates the chest muscle — gives chest shape and definition"},
+      {name:"Tricep Pushdown", sets:"3 sets × 12, 10, 8 reps", machine:"Cable Machine — attach the rope at the TOP of the machine.", how:"Stand facing the cable machine. Hold the rope with both hands. Tuck your elbows at your sides and keep them there throughout — very important. Push the rope DOWN until both arms are completely straight. Slowly let it come back up.", why:"Triceps make up 2/3 of your arm size — more important than biceps for big arms"},
+      {name:"Reverse Pushdown", sets:"3 sets × 12, 10, 8 reps", machine:"Same Cable Machine — use straight bar attachment at the TOP", how:"Same machine but now hold the straight bar with palms facing DOWN (overhand grip). Push down until arms straight. Slowly return. This hits the outer part of the tricep.", why:"Different angle on tricep — needed for complete arm development"},
+      {name:"Botharons Extension", sets:"3 sets × 12, 10, 8 reps", machine:"One dumbbell — hold with both hands above your head", how:"Stand straight. Hold one dumbbell with both hands above your head, arms straight. Lower the dumbbell behind your head by bending only your elbows. Your elbows should point forward, not flare out. Raise back up.", why:"Works the long head of tricep — adds the most size to the back of your arms"},
+      {name:"Dips", sets:"3 sets × 12, 10, 8 reps", machine:"Parallel Dip Bars — two bars at hip height parallel to each other", how:"Hold one bar in each hand. Arms straight, body supported. Lower your body by bending your elbows until your upper arms are parallel to the floor. Push back up. Lean slightly forward to target chest more.", why:"Best finisher — works chest and triceps together. Builds pushing endurance and upper body strength"},
+    ],
+    cooldown:"Chest stretch: Stand in a doorway, place both forearms on the door frame, lean your body forward gently until you feel a stretch across your chest. Hold 20 sec. Tricep stretch: Raise one arm above head, bend it behind your head, use other hand to gently push elbow back. Hold 20 sec each side.",
+    diabetes:"Wednesday has the most exercises. To finish in 80 min — move quickly between exercises, rest only 45–60 seconds between sets. Check sugar before gym. If you feel dizzy or shaky during workout — stop immediately, take glucose tablets and rest.",
+    stamina:""
+  },
+  {
+    day:"Thu", sameAs:"Same as Monday", tag:"Back & Biceps",
+    color:"#4f3fcf", colorBg:"#1e1a3a", colorText:"#8b7fe8",
+    title:"Back & Biceps",
+    focus:"Try 1 more rep or slightly heavier than Monday",
+    warmup:"10 min Treadmill — slightly faster than Monday if possible.",
+    time:"10 min warm-up + 60 min exercises + 10 min stretch = 80 min",
+    exercises:[
+      {name:"Pull Ups", sets:"3 sets × 12, 10, 8 reps", machine:"Assisted Pull Up Machine", how:"Same as Monday. Try to do 1 more rep on any set compared to Monday.", why:"Progress = 1 extra rep per week. Small improvements add up to big results."},
+      {name:"Lat Pulldown", sets:"3 sets × 12, 10, 8 reps", machine:"Lat Pulldown Machine", how:"Same as Monday. If Monday felt easy, add 2.5 kg more weight this session.", why:"Back width grows fastest with consistent small weight increases"},
+      {name:"Compound Row", sets:"3 sets × 12, 10, 8 reps", machine:"Seated Cable Row Machine", how:"Same as Monday. This time hold the squeeze at the end for 2 seconds instead of 1.", why:"That extra 1 second doubles the posture benefit"},
+      {name:"T-Bar Row", sets:"3 sets × 12, 10, 8 reps", machine:"T-Bar Row Machine", how:"Same as Monday. If lower back felt strain on Monday, reduce weight. Form always over weight.", why:""},
+      {name:"Reverse Grip Lat Pulldown", sets:"3 sets × 12, 10, 8 reps", machine:"Lat Pulldown Machine — underhand grip", how:"Same as Monday underhand grip.", why:""},
+      {name:"Dumbbell Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells", how:"Same as Monday. Focus on the 3-second slow lowering — this is where the muscle grows most.", why:"Slower lowering = more muscle growth"},
+      {name:"Cable Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Cable Machine — bar at bottom", how:"Same as Monday.", why:""},
+      {name:"Hammer Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells", how:"Same as Monday. Alternate arms — right then left — to save a little time.", why:""},
+      {name:"Forearm Exercise", sets:"3 sets × 20, 20, 20 reps", machine:"Light dumbbell", how:"Same as Monday. Wrist curls on thighs.", why:""},
+    ],
+    cooldown:"Same as Monday — lat stretch and bicep wall stretch.",
+    diabetes:"Thursday evening — if your sugar has been running low this week, have a small snack (1 banana or 2 biscuits) 30 minutes before gym. Monitor sugar on the commute home.",
+    stamina:""
+  },
+  {
+    day:"Fri", sameAs:"Same as Tuesday", tag:"Legs & Shoulders",
+    color:"#16a34a", colorBg:"#0d2010", colorText:"#4ade80",
+    title:"Legs & Shoulders",
+    focus:"Go slightly heavier than Tuesday on every exercise",
+    warmup:"10 min Cycling — medium pace.",
+    time:"10 min warm-up + 60 min exercises + 10 min stretch = 80 min",
+    exercises:[
+      {name:"Squat", sets:"3 sets × 12, 10, 8 reps", machine:"Squat Rack", how:"Same as Tuesday. If Tuesday felt manageable, try adding 5 kg more today.", why:"Weekly squat progression = steady testosterone increase"},
+      {name:"Wide Squat (Sumo Squat)", sets:"3 sets × 12, 10, 8 reps", machine:"Squat Rack or dumbbell held at chest", how:"Same as Tuesday. Feet wide, toes out at 45 degrees. Lower straight down. Keep knees pointing same direction as toes. Push back up through heels.", why:""},
+      {name:"Hip Thrust", sets:"3 sets × 12, 10, 8 reps", machine:"Flat bench + barbell or dumbbell", how:"Same as Tuesday. If you did bodyweight on Tuesday, try adding a light dumbbell on your hips today.", why:""},
+      {name:"Leg Press", sets:"3 sets × 12, 10, 8 reps", machine:"Leg Press Machine", how:"Same as Tuesday. Try a slightly wider foot position this time.", why:""},
+      {name:"Leg Extension", sets:"3 sets × 12, 10, 8 reps", machine:"Leg Extension Machine", how:"Same as Tuesday. Pause 2 seconds at the top of each rep.", why:""},
+      {name:"Leg Curl", sets:"3 sets × 12, 10, 8 reps", machine:"Leg Curl Machine", how:"Same as Tuesday. Slow 3-second lowering.", why:""},
+      {name:"Calf Raises", sets:"3 sets × 20, 20, 20 reps", machine:"Step or Calf Raise Machine", how:"Same as Tuesday. Try holding a light dumbbell in each hand for extra resistance.", why:"Blood flow improvement to lower body is cumulative — twice a week makes a big difference"},
+      {name:"Shoulder Press", sets:"3 sets × 12, 10, 8 reps", machine:"Shoulder Press Machine", how:"Same as Tuesday. Add 2.5 kg if Tuesday felt easy.", why:""},
+      {name:"Front Raises", sets:"3 sets × 12, 10, 8 reps", machine:"Dumbbells", how:"Same as Tuesday.", why:""},
+      {name:"Lateral Raises", sets:"3 sets × 12, 10, 8 reps", machine:"Light Dumbbells", how:"Same as Tuesday. Form over weight — always light for this exercise.", why:""},
+    ],
+    cooldown:"Same as Tuesday — quad, hamstring and calf stretches.",
+    diabetes:"Friday after a full work week — stress hormones may have kept your sugar elevated all week. Hard leg training will bring it back down naturally. Good combination. Check your sugar before bed tonight.",
+    stamina:""
+  },
+  {
+    day:"Sat", sameAs:"Same as Wednesday", tag:"Chest & Triceps + Abs",
+    color:"#dc6f1a", colorBg:"#2a1500", colorText:"#fb923c",
+    title:"Chest, Triceps & Abs",
+    focus:"Add weight or reps compared to Wednesday",
+    warmup:"10 min Cycling — medium pace.",
+    time:"10 min warm-up + 60 min exercises + 10 min stretch = 80 min",
+    exercises:[
+      {name:"Abs Circuit — 4 Exercises", sets:"3 rounds", machine:"Floor mat", how:"Same as Wednesday. Try to hold the plank 5 seconds longer than Wednesday.", why:""},
+      {name:"Push Ups", sets:"3 sets × 10, 10, 10 reps", machine:"Floor", how:"Same as Wednesday. Try to do 2 more reps per set than Wednesday.", why:""},
+      {name:"Chest Press (Machine)", sets:"3 sets × 12, 10, 8 reps", machine:"Chest Press Machine", how:"Same as Wednesday. Focus on 3-second slow return.", why:""},
+      {name:"Incline Press", sets:"3 sets × 12, 10, 8 reps", machine:"Incline Bench + dumbbells", how:"Same as Wednesday. Add 2.5 kg if Wednesday felt manageable.", why:""},
+      {name:"Decline Press", sets:"3 sets × 12, 10, 8 reps", machine:"Decline Bench", how:"Same as Wednesday.", why:""},
+      {name:"Pec Fly", sets:"3 sets × 12, 10, 8 reps", machine:"Pec Deck Machine", how:"Same as Wednesday. Hold the squeeze at the center for 2 seconds.", why:"That 2 second squeeze = better chest shape over time"},
+      {name:"Tricep Pushdown", sets:"3 sets × 12, 10, 8 reps", machine:"Cable Machine — rope at top", how:"Same as Wednesday.", why:""},
+      {name:"Reverse Pushdown", sets:"3 sets × 12, 10, 8 reps", machine:"Cable Machine — bar at top", how:"Same as Wednesday.", why:""},
+      {name:"Botharons Extension", sets:"3 sets × 12, 10, 8 reps", machine:"One dumbbell held with both hands", how:"Same as Wednesday.", why:""},
+      {name:"Dips", sets:"3 sets × 12, 10, 8 reps", machine:"Parallel Dip Bars", how:"Same as Wednesday.", why:""},
+    ],
+    cooldown:"Same as Wednesday — chest doorway stretch and tricep overhead stretch.",
+    diabetes:"Saturday is your last hard training day. Eat a proper recovery meal tonight — rice or roti + dal or chicken + vegetables. Check your weekly glucose readings today and see if training days show lower numbers than rest day.",
+    stamina:""
+  },
+  {
+    day:"Sun", tag:"Full Rest",
+    color:"#444", colorBg:"#111", colorText:"#777",
+    title:"Full Rest Day", focus:"", rest:true,
+    restTips:[
+      "No gym today — complete rest",
+      "This is when your muscles actually grow and repair",
+      "Sleep 8–9 hours tonight",
+      "Eat well — protein in every meal (eggs, dal, paneer, chicken)",
+      "Light walk after dinner is fine and good for blood sugar",
+      "Review your glucose readings from this week"
+    ],
+    diabetes:"Sunday is your most stable blood sugar day. Good day to check your weekly average and share observations with your endocrinologist at the next visit. If you trained consistently this week, your insulin sensitivity will be better than last week.",
+    stamina:""
+  }
+];
+
+let activeDay = 0;
+let openEx = -1;
+
+
+function render() {
+  const d = plan[activeDay];
+
+  // Tabs
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = '';
+  plan.forEach((p, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn';
+    btn.style.background = activeDay === i ? p.color : '#111';
+    btn.style.color = activeDay === i ? '#fff' : '#444';
+    btn.style.boxShadow = activeDay === i ? '0 0 12px ' + p.color + '55' : 'none';
+    btn.innerHTML = p.day + '<div class="tab-sub" style="color:' + (activeDay===i?'rgba(255,255,255,0.7)':'#333') + '">' + (p.rest ? 'REST' : p.tag.split('&')[0].trim().toUpperCase().slice(0,5)) + '</div>';
+    btn.onclick = () => { activeDay = i; openEx = -1;  render(); };
+    tabsEl.appendChild(btn);
+  });
+
+  // Content
+  const content = document.getElementById('content');
+
+  if (d.rest) {
+    content.innerHTML = `
+      <div class="day-tag-row">
+        <span class="day-tag" style="background:${d.colorBg};color:${d.colorText}">${d.tag}</span>
+      </div>
+      <div class="day-title">${d.title}</div>
+      <div class="rest-wrap">
+        <div class="rest-moon">🌙</div>
+        <div class="rest-title">Rest & Recover</div>
+        <div class="rest-sub">Muscles repair and grow on rest days.<br>This is not a skip — it is part of the plan.</div>
+        <div class="rest-tips">${d.restTips.map(t=>`<div class="rest-tip"><span class="rest-tick">✓</span>${t}</div>`).join('')}</div>
+        <div class="diabetes-box" style="width:100%">
+          <div class="diabetes-label">🩺 DIABETES NOTE</div>
+          <div class="diabetes-text">${d.diabetes}</div>
+        </div>
+      </div>`;
+    return;
+  }
+
+  let html = `
+    <div class="day-tag-row">
+      <span class="day-tag" style="background:${d.colorBg};color:${d.colorText}">${d.tag}</span>
+      ${d.sameAs ? `<span class="same-as">${d.sameAs}</span>` : ''}
+    </div>
+    <div class="day-title">${d.title}</div>
+    <div class="day-focus">${d.focus}</div>
+    <br>
+    <div class="time-box">
+      <div class="time-label">⏱ TODAY'S SESSION</div>
+      <div class="time-val">${d.time}</div>
+    </div>
+    <div class="warmup-box">
+      <div class="warmup-label">🔥 WARM-UP — DO THIS FIRST</div>
+      <div class="warmup-text">${d.warmup}</div>
+    </div>
+    <div class="ex-section-label">Exercises — tap each one to see how to do it</div>`;
+
+  d.exercises.forEach((e, i) => {
+    const isOpen = openEx === i;
+    html += `
+      <div class="ex-card" id="excard-${i}" style="background:#0d0d15;border:1px solid ${isOpen ? d.color : '#1a1a25'};box-shadow:${isOpen ? '0 0 8px '+d.color+'33' : 'none'}">
+        <button class="ex-header" onclick="toggleEx(${i})">
+          <div class="ex-num" style="background:${d.colorBg};color:${d.colorText}">${i+1}</div>
+          <div style="flex:1;min-width:0">
+            <div class="ex-name">${e.name}</div>
+            <div class="ex-sets" style="color:${d.colorText}">${e.sets}</div>
+          </div>
+          <div class="ex-arrow">${isOpen ? '▲' : '▼'}</div>
+        </button>
+        ${isOpen ? `
+        <div class="ex-body">
+          <div class="ex-row">
+            <span class="ex-icon">📍</span>
+            <div>
+              <div class="ex-row-label" style="color:#5ba3d9">WHICH MACHINE / EQUIPMENT</div>
+              <div class="ex-row-text" style="color:#7ab8d8">${e.machine}</div>
+            </div>
+          </div>
+          <div class="ex-row">
+            <span class="ex-icon">▶️</span>
+            <div>
+              <div class="ex-row-label" style="color:#aaa">HOW TO DO IT — STEP BY STEP</div>
+              <div class="ex-row-text" style="color:#ccc">${e.how}</div>
+            </div>
+          </div>
+          ${e.why ? `<div class="ex-why"><span style="font-size:14px">💡</span><div class="ex-why-text">${e.why}</div></div>` : ''}
+        </div>` : ''}
+      </div>`;
+  });
+
+  html += `
+    <div class="cooldown-box">
+      <div class="cooldown-label">🧘 COOL-DOWN STRETCH — 10 MIN</div>
+      <div class="cooldown-text">${d.cooldown}</div>
+    </div>
+    <div class="diabetes-box">
+      <div class="diabetes-label">🩺 DIABETES NOTE FOR TODAY</div>
+      <div class="diabetes-text">${d.diabetes}</div>
+    </div>`;
+
+  content.innerHTML = html;
+}
+
+function toggleEx(i) {
+  openEx = openEx === i ? -1 : i;
+  render();
+}
+
+
+
+render();
+</script>
+</body>
+</html>
